@@ -10,7 +10,7 @@ function App(): React.JSX.Element {
     <RecoilRoot>
       <NavigationContainer>
         <SafeAreaView style={styles.container}>
-          <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
+          <StatusBar backgroundColor={colors.blue} />
           <RootNavigator />
         </SafeAreaView>
       </NavigationContainer>
