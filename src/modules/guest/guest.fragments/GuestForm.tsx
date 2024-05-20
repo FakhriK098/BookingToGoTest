@@ -1,5 +1,6 @@
 import {
   Image,
+  Platform,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -12,6 +13,8 @@ import {GuestFormProps} from '../guest.interface';
 import {Controller} from 'react-hook-form';
 
 const GuestForm = ({control, remove, error, index}: GuestFormProps) => {
+  const platform = Platform.OS;
+
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
@@ -38,10 +41,12 @@ const GuestForm = ({control, remove, error, index}: GuestFormProps) => {
               onChangeText={onChange}
               style={[
                 styles.textInput,
+                // eslint-disable-next-line react-native/no-inline-styles
                 {
                   borderColor: error?.guests?.[index]?.name
                     ? colors.red
                     : colors.grey,
+                  width: platform === 'ios' ? '65%' : '70%',
                 },
               ]}
             />
@@ -70,7 +75,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 8,
     marginStart: 12,
-    width: '70%',
   },
   formContainer: {
     flexDirection: 'row',

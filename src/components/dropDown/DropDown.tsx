@@ -2,6 +2,7 @@ import {
   FlatList,
   Image,
   Modal,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -68,7 +69,8 @@ const DropDown = ({label, data, onSelect}: DropDownProps) => {
   return (
     <TouchableOpacity
       ref={DropdownButton}
-      style={styles.button}
+      // eslint-disable-next-line react-native/no-inline-styles
+      style={[styles.button, {height: Platform.OS === 'ios' ? 40 : 50}]}
       onPress={toggleDropDown}>
       {renderDropdown()}
       <Text style={[styles.buttonText, styles.font]}>{label}</Text>
@@ -84,7 +86,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.white,
-    height: 50,
     width: '20%',
     paddingHorizontal: 10,
     zIndex: 1,
